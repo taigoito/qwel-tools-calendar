@@ -6,6 +6,4 @@
 
 
 import BusinessCalendar from './_businessCalendar.js';
-new BusinessCalendar({
-  url: 'https://test2.qwel.design/'
-});
+new BusinessCalendar();

@@ -43,3 +43,12 @@ function insertState($file, $date, $state) {
 
   return executeQuery($file, $sql, $options);
 }
+
+function cleanState($file, $date) {
+  $sql = "DELETE FROM t_status WHERE date <= :date";
+  $options = [
+    ':date' => $date
+  ];
+
+  return executeQuery($file, $sql, $options);
+}

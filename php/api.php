@@ -35,4 +35,13 @@ if ($method === 'fetch') {
   
     return;
   }
+  
+  // ステータスの削除
+  if ($method === 'delete') {
+    if (isset($_POST['date'])) {
+      cleanState($file, $_POST['date']); 
+    }
+  
+    return;
+  }
 }

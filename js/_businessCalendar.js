@@ -10,11 +10,24 @@ export default class BusinessCalendar extends Calendar {
   async makeCalendar(year, month) {
     super.makeCalendar(year, month);
 
-    // データを取得して、状態値を反映
+    this.options.url ||= `${location.protocol}//${location.hostname}/`;
+    this.options.delay ||= 0;
     const url = this.options.url;
+
+    // 過去のデータをクリーン
+    const today = new Date();
+    let date = today.setDate(today.getDate() + this.options.delay);
+    date = new Date(date).toISOString().split('T')[0];
+    const postData = new FormData;
+    postData.set('date', date);
+    fetch(`${url}php/api.php?method=delete`, {
+      method: 'POST',
+      body: postData
+    });
+
+    // データを取得して、状態値を反映
     const res = await fetch(`${url}php/api.php?method=fetch&year=${year}&month=${month + 1}`);
     const data = await res.json();
-    console.log(data);
     this._setStatus(data);
   }
 
@@ -36,15 +49,20 @@ export default class BusinessCalendar extends Calendar {
     const elems = this._body.querySelectorAll('[data-date]');
     elems.forEach((td) => {
       const date = td.dataset.date;
-      const week = td.dataset.week;
 
-      // 週のデフォルト値
-      let state = 2;
+      // 予約開始日
+      const today = new Date();
+      const startDate = today.setDate(today.getDate() + this.options.delay);
+
+      // 週のデフォルト値 (予約開始日以前は)
+      let state = (new Date(date) < startDate) ? 0 : 2;
 
       // データがあれば、状態値を上書き
-      data.forEach((dt) => {
-        if (dt.date == date) state = dt.state;
-      });
+      if (new Date(date) > startDate) {
+        data.forEach((dt) => {
+          if (dt.date == date) state = dt.state;
+        });
+      }
 
       td.dataset.state = state;
     });
@@ -54,15 +72,21 @@ export default class BusinessCalendar extends Calendar {
     // 編集モード時のみ受付
     if (!(this._elem.classList.contains('--editMode'))) return;
 
-    // 状態値を更新
     const target = event.target;
+    const date = target.dataset.date;
+
+    // 予約開始日以前は受付しない
+    const today = new Date();
+    const startDate = today.setDate(today.getDate() + this.options.delay);
+    if (new Date(date) < startDate) return;
+    
+    // 状態値を更新
     let state = target.dataset.state;
     state = (state + 1) % 3;
     target.dataset.state = state;
 
     // データの更新をPUT
     const url = this.options.url;
-    const date = target.dataset.date;
 
     if (date) {
       const postData = new FormData;
