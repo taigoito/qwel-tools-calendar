@@ -6,6 +6,8 @@
 
 export default class Calendar {
   constructor(options = {}) {
+    this.options = options;
+    
     // 表記の定義
     // 0: 1月, 1: 2月...なので注意
     if (this.options.formatJP) {

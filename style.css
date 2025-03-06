@@ -59,7 +59,7 @@ button, input, select, textarea {
  * Calendar
  */
 .calendar {
-  width: min(100%, 72rem);
+  width: min(100%, 35rem);
   margin: 3rem auto;
   padding-bottom: 1.5rem;
 }
@@ -88,12 +88,12 @@ button, input, select, textarea {
   text-align: center;
 }
 .calendar__wrap {
-  width: min(100%, 72rem);
+  width: min(100%, 35rem);
   margin: 0 auto;
   overflow: auto;
 }
 .calendar__view {
-  width: calc(clamp(108px, 14vw, 162px) * 7);
+  width: calc(clamp(46px, 6vw, 69px) * 7);
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0 auto;
@@ -105,8 +105,8 @@ button, input, select, textarea {
   border-top: 1px solid #999999;
 }
 .calendar__view th, .calendar__view td {
-  width: clamp(108px, 14vw, 162px);
-  height: calc(clamp(108px, 14vw, 162px) * 3 / 4);
+  width: clamp(46px, 6vw, 69px);
+  height: calc(clamp(46px, 6vw, 69px) * 3 / 4);
   border-right: 1px solid #999999;
   text-align: center;
 }

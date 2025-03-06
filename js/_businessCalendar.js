@@ -12,8 +12,9 @@ export default class BusinessCalendar extends Calendar {
 
     // データを取得して、状態値を反映
     const url = this.options.url;
-    const res = await fetch(`${url}datestatus.json`);
+    const res = await fetch(`${url}php/api.php?method=fetch&year=${year}&month=${month + 1}`);
     const data = await res.json();
+    console.log(data);
     this._setStatus(data);
   }
 
@@ -38,11 +39,12 @@ export default class BusinessCalendar extends Calendar {
       const week = td.dataset.week;
 
       // 週のデフォルト値
-      let state = (week == 0) ? 0 : (week == 6) ? 1 : 2;
+      let state = 2;
 
       // データがあれば、状態値を上書き
-      const keys = Object.keys(data);
-      if (keys.includes(date)) state = data[date];
+      data.forEach((dt) => {
+        if (dt.date == date) state = dt.state;
+      });
 
       td.dataset.state = state;
     });
@@ -62,12 +64,15 @@ export default class BusinessCalendar extends Calendar {
     const url = this.options.url;
     const date = target.dataset.date;
 
-    fetch(`${url}datestatus/${date}.json`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: state
-    });
+    if (date) {
+      const postData = new FormData;
+      postData.set('date', date);
+      postData.set('state', state);
+
+      fetch(`${url}php/api.php?method=insert`, {
+        method: 'POST',
+        body: postData
+      });
+    }
   }
 }
