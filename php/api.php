@@ -23,9 +23,9 @@ if ($method === 'fetch') {
 
 } else {
   // リファラ確認
-  //$referer = $_SERVER['HTTP_REFERER'];
-  //$url = parse_url($referer);
-  //if (!stristr($url['host'], 'qwel.design')) return;
+  $referer = $_SERVER['HTTP_REFERER'];
+  $url = parse_url($referer);
+  if (!stristr($url['host'], 'tools.qwel.design')) return;
 
   // ステータスの挿入
   if ($method === 'insert') {
