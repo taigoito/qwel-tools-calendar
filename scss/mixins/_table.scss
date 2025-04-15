@@ -1,0 +1,42 @@
+// Table
+
+@mixin table() {
+  width: 100%;
+
+  @media (max-width: breakpoint("sm") - 0.1px) {
+    display: block;
+  }
+
+  thead, tbody {
+    width: 100%;
+
+    @media (max-width: breakpoint("sm") - 0.1px) {
+      display: block;
+    }
+  }
+
+  thead {
+    border: 0; // Reset
+  }
+
+  tr {
+    border-bottom: 1px solid themeColor("lighter");
+
+    &:first-child {
+      border-top: 1px solid themeColor("lighter");
+    }
+
+    @media (max-width: breakpoint("sm") - 0.1) {
+      display: block;
+    }
+  }
+
+  th, td {
+    padding: space();
+    border: 0; // Reset
+
+    @media (max-width: breakpoint("sm") - 0.1) {
+      display: block;
+    }
+  }
+}

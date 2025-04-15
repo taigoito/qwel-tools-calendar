@@ -1,0 +1,52 @@
+/**
+ * Main
+ */
+
+.main {
+  width: min(100%, 768px);
+  min-height: calc(100vh - 18rem);
+  margin: 0 auto;
+  padding: 0 clamp(0.75rem, 2%, 1.5rem);
+
+  &__title {
+    &::after {
+      content: "✶";
+      color: themeColor("secondary");
+      font-size: 1.25em;
+      margin-left: space(1);
+    }
+
+    & > span {
+      font-family: "Cormorant Garamond", serif;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: space(3) 0;
+    padding: 0;
+  }
+
+  &__listItem {
+    &::before {
+      content: '✶';
+      padding-right: 0.5em;
+      color: themeColor("primaryLight");
+      font-size: 1.5em;
+    }
+
+    &--spec {
+      color: themeColor("dark");
+      font-size: 0.875rem;
+      letter-spacing: $headingLetterSpacing;
+  
+      &::before {
+        content: "―";
+        padding-right: 0.5em;
+        color: themeColor("secondary");
+        font-weight: 700;
+        margin-right: space(1);
+      }
+    }
+  }
+}

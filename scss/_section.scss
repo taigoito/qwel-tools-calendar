@@ -1,0 +1,21 @@
+/**
+ * Section
+ */
+
+.section {
+  &__inner {
+    padding-top: space(4);
+    padding-bottom: space(4);
+  }
+
+  &__heading {
+    margin: space(3) 0;
+    text-align: center;
+  }
+
+  &__container {
+    @include container("sm");
+    padding-top: space(2) + space(3);
+    padding-bottom: space(4);
+  }
+}

@@ -4,7 +4,7 @@
  * Location: Fukui, Japan
  */
 
-import Calendar from './_calendar.js';
+import Calendar from './calendar.js';
 
 export default class BusinessCalendar extends Calendar {
   async makeCalendar(year, month) {

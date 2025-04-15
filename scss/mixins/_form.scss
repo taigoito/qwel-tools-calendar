@@ -1,0 +1,26 @@
+// Form
+
+@mixin form() {
+  label {
+    display: block;
+
+    span.required {
+      color: #cc3333; //hsl(0, 60%, 50%)
+      @include smallText();
+    }
+  }
+
+  input[type="text"], input[type="tel"], input[type="url"], input[type="email"], input[type="password"], input[type="file"], select, optgroup, textarea {
+    display: block;
+    width: 100%;
+    padding: space(1);
+  }
+
+  input[type="file"] {
+    outline: 0;  
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}

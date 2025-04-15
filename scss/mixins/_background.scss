@@ -1,0 +1,12 @@
+// Background
+
+@mixin background($color: "primary") {
+  background-color: themeColor($color);
+  color: colorYiq(themeColor($color));
+
+  a {
+    &, &:active, &:hover, &:focus {
+      color: colorYiq(themeColor($color));
+    }
+  }
+}

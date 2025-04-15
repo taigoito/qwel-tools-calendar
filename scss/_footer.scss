@@ -1,0 +1,32 @@
+/**
+ * Layout - Footer
+ */
+
+.footer {
+  padding: space(5) 0;
+  @include background("primary");
+  text-align: center;
+
+  &__inner {
+    @include row(center);
+    gap: space(4);
+    @include container();
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    @include smallText();
+
+    &--github .icon--m {
+      width: 3.75rem;
+      height: 3.75rem;
+    }
+  }
+
+  small {
+    font-size: 0.875rem;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "qwel-starter-template",
+  "version": "1.0",
+  "description": "",
+  "main": "init.js",
+  "scripts": {
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taigoito/qwel-starter-template.git"
+  },
+  "author": "Taigo Ito",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/taigoito/qwel-starter-template/issues"
+  },
+  "homepage": "https://github.com/taigoito/qwel-starter-template#readme"
+}

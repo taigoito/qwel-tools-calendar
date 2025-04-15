@@ -2,13 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Portal Site</title>
+    <title>Business Calendar | QWEL in Action</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Noto+Sans:wght@100..900&family=Noto+Serif:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <main>
+    <header class="header">
+      <h1 id="logo"><a href="https://qwel.design/"><img src="./logo_animation.svg" alt="QWEL in Action"></a></h1>
+      <ul class="breadcrumb">
+        <li class="breadcrumb__item"><a href="https://qwel.design/">QWEL in Action</a></li>
+        <li class="breadcrumb__item"><a href="../">Creative Tools</a></li>
+        <li class="breadcrumb__item  breadcrumb__item--current"><span>Business Calendar</span></li>
+      </ul>
+    </header>
+    <main class="main">
+      <h2 class="main__title">Business Calendar | Created by <span> ― QWEL.DESIGN</span></h2>
+      <ul class="main__list">
+        <li class="main__listItem--spec">民宿の空室状況管理のための簡易システムとして開発した、営業日カレンダーです。</li>
+        <li class="main__listItem--spec">コントロールから「編集」を選択してみてください。</li>
+        <li class="main__listItem--spec">すると、カレンダーの日付ごとの色を変えることができます。</li>
+        <li class="main__listItem--spec">SQLiteで状態管理 → 自作API → JSで描画 と、PHP / Vanilla JS で全てスクラッチしました。</li>
+      </ul>
       <div id="calendar" class="calendar">
         <div class="calendar__mode">
           <select>
@@ -34,6 +51,19 @@
         </ul>
       </div>
     </main>
-    <script src="./js/init.js" type="module"></script>
+    <footer id="footer" class="footer">
+      <div class="footer__inner">
+        <a class="footer__item footer__item--github" href="https://github.com/taigoito" target="_blank" rel="noopener">
+          <span data-icon="ei-sc-github" data-size="m"></span>
+          GitHub
+        </a>
+        <a class="footer__item footer__item--contact" href="https://tools.qwel.design/contact-form/" target="_blank" rel="noopener">
+          <span data-icon="ei-envelope" data-size="m"></span>
+          Contact Me
+        </a>
+        <small class="footer__copyright">&copy; 2019 - 2025 QWEL.DESIGN</small>
+      </div>
+    </footer>
+    <script src="./init.js" type="module"></script>
   </body>
 </html>
